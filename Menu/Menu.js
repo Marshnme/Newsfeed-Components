@@ -6,7 +6,8 @@ let menuItems = [
   "What's New",
   'Tech Trends',
   'Music',
-  'Log Out'
+  'Log Out',
+  'FINALLY'
 ];
 
 /* 
@@ -18,9 +19,37 @@ let menuItems = [
       {each menu item as a list item}
     </ul>
   </div>
-
   The function takes an array as its only argument.
+*/
 
+
+
+function createMenu(array){
+  const menu = document.createElement("div");
+  const list = document.createElement("ul");
+  
+  menu.classList.add("menu");
+
+
+  menu.appendChild(list);
+
+  
+  const menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener('click', e => menu.classList.toggle('menu--open'));
+  
+
+  menuItems.forEach( item => {
+    const listItem = document.createElement('li');
+    list.appendChild(listItem);
+    listItem.textContent = item;
+  });
+  
+return menu
+}
+const divMain = document.querySelector(".header");
+divMain.appendChild(createMenu(menuItems));
+console.log(divMain)
+/* 
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
   Add those items to the <ul>
 
